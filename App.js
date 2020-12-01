@@ -45,7 +45,17 @@ const App = () => {
     <View
     style = {styles.container}>
       {image ? (
-        <Text>Image is Present</Text>
+        <View style = {styles.preview}>
+          <Text style= {styles.camtext}>Here is your new profile pic.</Text>
+          <Image style = {styles.clicked} source={{uri: image, width: "100%", height: "80%"}} />
+          <Button
+          title = "Click New Image"
+          onPress = {()=> {
+            setImage(null)
+          }}
+          ></Button>
+        </View>
+        
       ) : (
         <RNCamera
         style= {styles.preview}
@@ -81,7 +91,7 @@ const App = () => {
                   backgroundColor: "orange",
                   padding: 20,
                   alignSelf: "center"
-                }}
+                }}center
                 onPress = {()=>takePicture(camera)}
                 >
                   <Text
@@ -112,5 +122,24 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "space-around",
     alignItems: "center"
+  },
+  camtext : {
+    backgroundColor: "#3498DB",
+    color: "#FFF",
+    width : "100%",
+    textAlign : "center",
+    marginTop: 40,
+    marginBottom: 100,
+    paddingVertical: 20,
+    fontSize : 20,
+    fontWeight: "bold"
+  },
+  clicked : {
+    width: 250,
+    height: 250,
+    borderRadius: 150,
+    marginBottom: 50,
+
   }
+
 })
